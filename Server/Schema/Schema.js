@@ -12,6 +12,15 @@ const BookType = new GraphQLObjectType({
     })
 });
 
+const NBookType = new GraphQLObjectType({
+    name:'Book',
+    fields:() => ({
+        id: { type:GraphQLString },
+        name: {type: GraphQLString},
+        gender: {type:GraphQLString}
+    })
+});
+
 const RootQuery = new GraphQLObjectType({
     name:'RootQueryType',
     fields: {
@@ -31,6 +40,7 @@ var books = [
     {name:'anuj12', gender:'male'},
     {name:'anuj123', gender:'male'},
 ];
+
 module.exports = new GraphQLSchema({
     query: RootQuery
 });
