@@ -12,12 +12,6 @@ const BookType = new GraphQLObjectType({
     })
 });
 
-var books = [
-    {name:'anuj', gender:'male'},
-    {name:'anuj12', gender:'male'},
-    {name:'anuj123', gender:'male'},
-
-]
 const RootQuery = new GraphQLObjectType({
     name:'RootQueryType',
     fields: {
@@ -26,13 +20,17 @@ const RootQuery = new GraphQLObjectType({
             args:{id: {type: GraphQLString }},
             resolve(parent, args){
                 args.id
-                //get data from DB or any other source
                 return _.find(books, {id:args.id});
             }
         }
     }
 });
 
+var books = [
+    {name:'anuj', gender:'male'},
+    {name:'anuj12', gender:'male'},
+    {name:'anuj123', gender:'male'},
+];
 module.exports = new GraphQLSchema({
     query: RootQuery
 });
